@@ -25,10 +25,12 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(ggtfplot)
-example_df <- data.frame(TF = c('TF1', 'TF2', 'TF3'),
-                        rel_beg = c(-1000, -700, -400),
-                        rel_end = c(-800, -450, -300))
-draw_TF_plot(example_df, prom_length = 1000, title = 'gene_name')
+example_df <- data.frame(
+  TF = c("TF1", "TF2", "TF3"),
+  rel_beg = c(-1000, -700, -400),
+  rel_end = c(-800, -450, -300)
+)
+draw_TF_plot(example_df, prom_length = 1000, title = "gene_name")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
