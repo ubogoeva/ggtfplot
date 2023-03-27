@@ -2,7 +2,7 @@
 #'
 #' @param df Dataset of three column: 1st is TF name, 2nd is coordinates of begin, 3d is coords of ending.
 #'     Columns can be unnamed
-#' @param prom_length Promoter length to plot
+#' @param prom_length Promoter length to plot (just for nice breaks)
 #' @param title Title of plot (usually gene name)
 #'
 #' @return ggplot of TFs binds in promoter
@@ -16,10 +16,11 @@
 #' )
 #' draw_TF_plot(test_df)
 draw_TF_plot <- function(df, prom_length = 1500, title = "gene") {
-  if(!inherits(df, what = 'data.frame')) stop('Dataset must be data.frame, tibble or data.table class')
+  if(!inherits(df, what = 'data.frame')) stop('Input dataset must be data.frame, tibble or data.table class')
   if (ncol(df) > 3) warning("Dataset contain more than 3 column, used first three")
   if (ncol(df) < 3) stop("Dataset contain less than three required columns")
-  x_breaks_prom <- c(seq(-prom_length - 500, 400, 300)[seq(-prom_length - 500, 400, 300) != 0])
+  if (prom_length <= 0) stop('Promoter length must be more than zero')
+  x_breaks_prom <- c(seq(-prom_length - 200, 400, 300)[seq(-prom_length - 200, 400, 300) != 0])
   colnames(df)[1:3] <- c("TF", "rel_beg", "rel_end")
   df |>
     dplyr::group_by(TF) |> # to group_by
@@ -40,7 +41,7 @@ draw_TF_plot <- function(df, prom_length = 1500, title = "gene") {
       size = 2.5, show.legend = FALSE
     ) + # draw TF label
     ggplot2::scale_x_continuous(
-      name = "promoter", limits = c(-1500 - 500, 350),
+      name = "promoter", limits = c(-prom_length - 200, 350),
       breaks = c(x_breaks_prom, 1),
       labels = c(x_breaks_prom, "+1")
       # sec.axis = dup_axis( name = paste0(c('genome coordinates',chr,':'),collapse = ' '),
