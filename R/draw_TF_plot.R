@@ -1,7 +1,7 @@
-#' Build transcription factor on promoters plot
+#' Build plot of transcription factor on promoters
 #'
 #' @param df Dataset of three column: 1st is TF name, 2nd is coordinates of begin, 3d is coords of ending.
-#'     Columns can be unnamed
+#'     Columns can be unnamed. 2 and 3d column should contain values less than zero.
 #' @param prom_length Promoter length to plot (just for nice breaks)
 #' @param title Title of plot (usually gene name)
 #'

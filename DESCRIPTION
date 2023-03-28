@@ -1,10 +1,10 @@
 Package: ggtfplot
-Title: Draw transcirption factor plot
+Title: Create Visualization of Transcirption Factor Coordinates
 Version: 0.0.0.9000
 Authors@R: 
     person("Elena", "Ubogoeva", , "ubogoeva@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8315-1191"))
-Description: This package help with creation nice ggplots 
+Description: This package help with creation nice 'ggplot2'-based plots that 
     contain transcription factor coordinates on promoter.
 License: MIT + file LICENSE
 Encoding: UTF-8

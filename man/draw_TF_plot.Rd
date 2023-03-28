@@ -2,14 +2,15 @@
 % Please edit documentation in R/draw_TF_plot.R
 \name{draw_TF_plot}
 \alias{draw_TF_plot}
-\title{Build transcription factor on promoters plot}
+\title{Build plot of transcription factor on promoters}
 \usage{
 draw_TF_plot(df, prom_length = 1500, title = "gene")
 }
 \arguments{
-\item{df}{Dataset of three column: 1st is TF name, 2nd is coordinates of begin, 3d is coords of ending}
+\item{df}{Dataset of three column: 1st is TF name, 2nd is coordinates of begin, 3d is coords of ending.
+Columns can be unnamed. 2 and 3d column should contain values less than zero.}
 
-\item{prom_length}{Promoter length to plot}
+\item{prom_length}{Promoter length to plot (just for nice breaks)}
 
 \item{title}{Title of plot (usually gene name)}
 }
@@ -17,11 +18,13 @@ draw_TF_plot(df, prom_length = 1500, title = "gene")
 ggplot of TFs binds in promoter
 }
 \description{
-Build transcription factor on promoters plot
+Build plot of transcription factor on promoters
 }
 \examples{
-test_df <- data.frame(TF = c('TF1', 'TF2', 'TF3'),
-                  rel_beg = c(-1000, -700, -400),
-                  rel_end = c(-800, -450, -300))
+test_df <- data.frame(
+  TF = c("TF1", "TF2", "TF3"),
+  rel_beg = c(-1000, -700, -400),
+  rel_end = c(-800, -450, -300)
+)
 draw_TF_plot(test_df)
 }
